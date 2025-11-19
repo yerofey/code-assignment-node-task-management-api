@@ -5,32 +5,37 @@
 ## Quick Start
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Start Docker containers:
+
 ```bash
 docker-compose up -d
 ```
 
 3. Run database migrations:
+
 ```bash
 npm run prisma:generate
 npm run prisma:migrate
 ```
 
 4. Seed the database:
+
 ```bash
 npm run seed
 ```
 
 5. Start the application:
+
 ```bash
 npm run start:dev
 ```
 
-The API will be available at http://localhost:3000
+The API will be available at <http://localhost:3000>
 
 ## Available Endpoints
 
@@ -45,6 +50,7 @@ The API will be available at http://localhost:3000
 ## Task Filters
 
 The GET /tasks endpoint supports the following query parameters:
+
 - status: TODO, IN_PROGRESS, COMPLETED, CANCELLED
 - priority: LOW, MEDIUM, HIGH, URGENT
 - assigneeId: UUID of the assignee

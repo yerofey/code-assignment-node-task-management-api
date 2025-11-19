@@ -30,14 +30,14 @@ The API will be available at `http://localhost:3000`
 
 Users have reported that the API becomes noticeably slow as the amount of data grows. The application works correctly with small datasets but exhibits performance degradation with larger volumes of data.
 
-### Reported Issues:
+### Reported Issues
 
 1. **API Response Times**: The `/tasks` endpoint response time increases significantly with the number of tasks in the system. Some users report response times over 5 seconds with just a few hundred tasks.
 2. **Database Load**: The database server shows unusually high activity during normal operations, particularly when fetching task lists.
 3. **Task Assignment Delays**: Creating or updating tasks with assignees takes longer than expected, sometimes causing timeouts in client applications.
 4. **Search Performance**: Filtering tasks by various criteria (status, dates, assignee, etc.) becomes progressively slower as the dataset grows.
 
-### Your Task:
+### Your Task
 
 Investigate the codebase to identify and fix performance bottlenecks. The application should be able to handle thousands of tasks efficiently. Consider:
 
@@ -54,7 +54,7 @@ Document all performance issues you find and the solutions you implement in your
 
 Implement a comprehensive activity logging system that tracks all changes made to tasks.
 
-#### Requirements:
+#### Requirements
 
 1. **Track all changes** to tasks including:
    - Field updates (title, description, status, priority, due date, assignee)
@@ -77,7 +77,8 @@ Implement a comprehensive activity logging system that tracks all changes made t
    - Changed fields with old and new values
    - Task ID and title
 
-#### Example Response:
+#### Example Response
+
 ```json
 {
   "data": [
@@ -112,23 +113,27 @@ Implement a comprehensive activity logging system that tracks all changes made t
 ## Evaluation Criteria
 
 ### Code Quality
+
 - Clean, readable, and maintainable code
 - Proper error handling
 - Following NestJS best practices
 - TypeScript usage
 
 ### Performance
+
 - Efficiency of database queries
 - Proper use of indexes
 - Caching strategy where appropriate
 - Scalability considerations
 
 ### Feature Completeness
+
 - All requirements implemented
 - Edge cases handled
 - API documentation
 
 ### Testing
+
 - Unit tests for new features
 - Integration tests for API endpoints
 

@@ -15,6 +15,7 @@ model User {
   updatedAt DateTime @updatedAt
 
   assignedTasks Task[]
+  activities    Activity[]
 }
 
 model Project {
@@ -43,6 +44,14 @@ model Task {
   assignee    User?    @relation(fields: [assigneeId], references: [id])
 
   tags        Tag[]
+
+  activities  Activity[]
+
+  @@index([status])
+  @@index([priority])
+  @@index([assigneeId])
+  @@index([projectId])
+  @@index([dueDate])
 }
 
 model Tag {
@@ -51,6 +60,20 @@ model Tag {
   createdAt DateTime @default(now())
 
   tasks     Task[]
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  action    String   // created, updated, deleted
+  changes   Json     // Stores { field: { old: val, new: val } }
+  createdAt DateTime @default(now())
+
+  taskId    String?
+  taskTitle String
+  task      Task?    @relation(fields: [taskId], references: [id], onDelete: SetNull)
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 enum TaskStatus {

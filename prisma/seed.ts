@@ -1,8 +1,25 @@
 import { PrismaClient, TaskStatus, TaskPriority } from '@prisma/client';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL,
+    },
+  },
+});
 
 async function main() {
+  // Cleanup existing data
+  try {
+    await prisma.activity.deleteMany();
+    await prisma.task.deleteMany();
+    await prisma.tag.deleteMany();
+    await prisma.project.deleteMany();
+    await prisma.user.deleteMany();
+  } catch (error) {
+    console.warn('Note: Failed to clean up data. Tables might not exist yet. Proceeding with seed...', error);
+  }
+
   // Create users
   const users = await Promise.all([
     prisma.user.create({ data: { email: 'john@example.com', name: 'John Doe' } }),
